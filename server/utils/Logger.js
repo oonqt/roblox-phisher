@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const stringify = require("json-stringify-safe");
 
 require('colors');
 
@@ -31,6 +32,7 @@ class Logger {
 		return this.path;
 	}
 
+	// morgan stream simulate
 	get stream() {
 		return {
 			write: (message) => {
@@ -77,7 +79,7 @@ class Logger {
 		let message;
 
 		if (typeof _message === "object") {
-			message = JSON.stringify(_message, null, "  ");
+			message = stringify(_message, null, "  ");
 		} else {
 			message = _message;
 		}
