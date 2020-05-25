@@ -31,6 +31,14 @@ class Logger {
 		return this.path;
 	}
 
+	get stream() {
+		return {
+			write: (message) => {
+				this.info(message);
+			}
+		}
+	}
+
 	info(msg) {
 		this.write(msg, 'info');
 	}
