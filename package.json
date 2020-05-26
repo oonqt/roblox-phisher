@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "A fullstack Roblox phishing server using NodeJS",
   "scripts": {
-    "install:client": "npm i --prefix client",
-    "install:server": "npm i --prefix server",
-    "install:all": "npm i && npm:install:server && npm:install:server",
+    "install:client": "yarn install --cwd client",
+    "install:server": "yarn install --cwd server",
+    "install:all": "npm i && npm:install:client && npm:install:server",
     "run:all": "concurrently \"npm start --prefix client\" \"npm run dev --prefix server\""
   },
   "repository": {
