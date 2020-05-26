@@ -30,24 +30,12 @@ if (key) {
 }
 
 class App extends Component {
-	constructor() {
-		super();
-
-		this.state = {
-			width: 0
-		}
-	}
-
-	componentDidMount() {
-		this.setState({ width: window.innerWidth });
-	}
-
 	render() {
 		return (
 			<Provider store={store}>
 				<ThemeProvider theme={theme}>
 					<Router>
-						<Particles type='cobweb' num={this.state.width / 4.5} color="#ffffff" bg={true} />
+						<Particles type='cobweb' num={window.innerWidth / 4.5} color="#ffffff" bg={true} />
 						<div className='container'>
 							<Switch>
 								<AuthRoute exact path='/' component={PhishPage} allowed={false} />

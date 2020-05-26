@@ -6,7 +6,7 @@ export default {
 			light: '#34c579',
 			contrastText: '#fff'
 		},
-		seconday: {
+		secondary: {
 			main: '#fff'
 		}
 	},
