@@ -30,13 +30,13 @@ export const loginAccount = (accountData, history) => (dispatch) => {
 		});
 };
 
-export const loginAdmin = (adminData, history) => (dispatch) => {
+export const loginAdmin = (key, history) => (dispatch) => {
 	dispatch({ type: LOADING_UI });
 
 	axios
-		.post('/api/auth/admin', adminData)
+		.post('/api/auth/admin', { key })
 		.then(() => {
-			setAuth(adminData.key);
+			setAuth(key);
 
 			dispatch({ type: CLEAR_ERRORS });
 			dispatch({ type: SET_AUTHENTICATED });
@@ -61,6 +61,6 @@ export const logoutAdmin = (history) => (dispatch) => {
 };
 
 const setAuth = (auth) => {
-	axios.defaults.header.common['Authorization'] = auth;
+	axios.defaults.headers.common['Authorization'] = auth;
 	localStorage.setItem('key', auth);
 };

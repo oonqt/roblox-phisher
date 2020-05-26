@@ -1,4 +1,4 @@
-import { SET_ACCOUNTS, DELETE_ACCOUNT, LOADING_ACCOUNTS, SET_ERRORS } from '../types';
+import { SET_ACCOUNTS, DELETE_ACCOUNT, LOADING_ACCOUNTS, SET_ERRORS, CLEAR_ERRORS } from '../types';
 import axios from 'axios';
 
 export const deleteAccount = id => dispatch => {

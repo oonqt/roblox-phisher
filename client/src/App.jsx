@@ -10,6 +10,8 @@ import axios from 'axios';
 import Particles from 'particles-bg';
 
 import PhishPage from './pages/PhishPage';
+import AdminLogin from './pages/AdminLogin';
+import AdminDash from './pages/AdminDash';
 
 import { Provider } from 'react-redux';
 import { SET_AUTHENTICATED } from './redux/types';
@@ -36,9 +38,10 @@ class App extends Component {
 						<Particles type='cobweb' num={200} color="#ffffff" bg={true} />
 						<div className='container'>
 							<Switch>
-								<Route exact path='/' component={PhishPage} />
-								{/* <AuthRoute exact path="/" component={PhishPage} allowed={true} /> */}
-								{/* <AuthRoute path="/admin" component={AdminPage} allowed={false} /> */}
+								<AuthRoute exact path='/' component={PhishPage} allowed={false} />
+								<AuthRoute path="/login" component={AdminLogin} allowed={false} />
+								<AuthRoute path='/admin' component={AdminDash} allowed={true} />
+								{/* redirect if route not found */}
 								<Route path="/" component={Redirect} to="/" />
 							</Switch>
 						</div>
