@@ -5,7 +5,7 @@
   "scripts": {
     "install:client": "yarn install --cwd client",
     "install:server": "yarn install --cwd server",
-    "install:all": "npm i && npm:install:client && npm:install:server",
+    "install:all": "npm-run-all install:client install:server",
     "run:all": "concurrently \"npm start --prefix client\" \"npm run dev --prefix server\""
   },
   "repository": {
@@ -16,6 +16,8 @@
   "author": "rechigo",
   "license": "MIT",
   "devDependencies": {
-    "concurrently": "^5.2.0"
+    "concurrently": "^5.2.0",
+    "npm-run-all": "^4.1.5",
+    "yarn": "^1.22.4"
   }
 }

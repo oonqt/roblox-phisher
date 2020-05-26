@@ -1,6 +1,5 @@
 {
   "name": "server",
-  "version": "1.0.0",
   "description": "Server-side of the Roblox Phisher codebase",
   "main": "server.js",
   "scripts": {
