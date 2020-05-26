@@ -11,7 +11,7 @@ const Navbar = ({ logout }) => {
 	return (
 		<AppBar color='secondary'>
 			<Toolbar>
-				<Grid justify='space-between' container spacing={24}>
+				<Grid justify='space-between' container>
 					<Grid item>
 						<Typography variant='h4'>Dashboard</Typography>
 					</Grid>
