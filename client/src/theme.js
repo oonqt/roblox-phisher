@@ -20,6 +20,9 @@ export default {
 		textField: {
 			margin: '10px auto 5px auto'
 		},
+		alert: {
+			marginTop: 15
+		},
 		logo: {
 			width: '25%',
 			marginBottom: 5,

