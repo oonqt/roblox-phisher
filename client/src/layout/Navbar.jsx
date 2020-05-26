@@ -13,7 +13,7 @@ const Navbar = ({ logout }) => {
 			<Toolbar>
 				<Grid justify='space-between' container spacing={24}>
 					<Grid item>
-						<Typography variant='h4'>Admin Dashboard</Typography>
+						<Typography variant='h4'>Dashboard</Typography>
 					</Grid>
 					<Grid item>
 						<Button color='primary' onClick={logout} variant='contained'>
