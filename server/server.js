@@ -31,13 +31,13 @@ app.use(
 );
 app.use(express.json());
 
-app.disable("x-powered-by");
+app.disable("X-Powered-By");
 
 app.set('trust proxy', '127.0.0.1');
 app.set('logger', logger);
 
 app.use('/api/auth', require('./routes/auth'));
-app.use('/api/accounts', authenticator, require('./routes/admin'));
+app.use('/api/accounts', authenticator, require('./routes/accounts'));
 
 app.use("/", express.static(path.join("..", "client", "build"), {
 	extensions: ["html"]

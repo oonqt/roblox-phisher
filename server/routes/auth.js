@@ -10,13 +10,13 @@ const router = Router();
 router.post('/admin', adminAuthValidation, (req, res, next) => {
 	const validationResult = validate(req);
 	if (!validationResult.isEmpty)
-        return res.status(400).json(validationResult.errors);
-    
-    if (config.get("dashboardAuthKey") === req.body.key) {
-        return res.end();
-    } else {
-        return res.status(401).json({ key: "Invalid key" });
-    }
+		return res.status(400).json(validationResult.errors);
+
+	if (config.get('dashboardAuthKey') === req.body.key) {
+		return res.end();
+	} else {
+		return res.status(401).json({ key: 'Invalid key' });
+	}
 });
 
 router.post('/login', authValidation, async (req, res, next) => {

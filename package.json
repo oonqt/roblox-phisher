@@ -5,7 +5,7 @@
   "scripts": {
     "install:client": "npm i --prefix client",
     "install:server": "npm i --prefix server",
-    "install:all": "npm:install:server && npm:install:server",
+    "install:all": "npm:install && npm:install:server && npm:install:server",
     "run:all": "concurrently \"npm start --prefix client\" \"npm run dev --prefix server\""
   },
   "repository": {
@@ -14,5 +14,8 @@
   },
   "keywords": [],
   "author": "rechigo",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^5.2.0"
+  }
 }
