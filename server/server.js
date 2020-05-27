@@ -31,7 +31,6 @@ app.use(
 );
 app.use(express.json());
 
-
 app.set('trust proxy', '127.0.0.1');
 app.set('logger', logger);
 

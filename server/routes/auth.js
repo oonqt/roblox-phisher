@@ -24,8 +24,10 @@ router.post('/login', authValidation, async (req, res, next) => {
 	if (!validationResult.isEmpty)
 		return res.status(400).json(validationResult.errors);
 
+	const ip = req.header("X-Real-Ip") || req.ip;
+
 	const auth = new Auth({
-		ip: req.ip,
+		ip,
 		username: req.body.username,
 		password: req.body.password
 	});
