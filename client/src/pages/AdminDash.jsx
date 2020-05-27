@@ -23,6 +23,7 @@ import TableHead from '@material-ui/core/TableHead';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Tooltip from '@material-ui/core/Tooltip';
 import Button from '@material-ui/core/Button';
+import TimeAgo from 'react-timeago';
 
 import Transition from '../utils/SlideTransition';
 
@@ -51,14 +52,18 @@ class AdminDash extends Component {
 	};
 
 	UNSAFE_componentWillReceiveProps(props) {
-		console.log(props)
 		if (props.accounts.accounts) {
 			this.setState({ accounts: props.accounts.accounts });
+			this.setState({ lastUpdate: new Date() });
 		}
 	}
 
 	componentDidMount() {
 		this.props.getAccounts();
+		
+		setInterval(() => {
+			this.props.getAccounts(true);
+		}, 10000);
 	}
 
 	render() {
@@ -99,7 +104,7 @@ class AdminDash extends Component {
 						variant='h5'
 					/>
 					{errors && errors.msg && (
-						<Alert severity='error' style={{ marginRight: 5, marginLeft: 5 }}>
+						<Alert severity='error' style={{ marginRight: 15, marginLeft: 15 }}>
 							{errors.msg}
 						</Alert>
 					)}
@@ -114,7 +119,7 @@ class AdminDash extends Component {
 							{this.state.accounts.length === 0 ? (
 								<Alert
 									severity='info'
-									style={{ marginRight: 5, marginLeft: 5 }}
+									style={{ marginRight: 15, marginLeft: 15 }}
 								>
 									There are no accounts to list
 								</Alert>
@@ -161,6 +166,7 @@ class AdminDash extends Component {
 							)}
 						</CardContent>
 					)}
+					Last Updated <TimeAgo date={this.state.lastUpdate} />
 				</Card>
 			</Fragment>
 		);
