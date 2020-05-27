@@ -18,8 +18,8 @@ export default function (state = initialState, action) {
                 loading: false
             }
         case DELETE_ACCOUNT:
-            const accountIndex = state.todos.findIndex(todo => todo.id === action.payload);
-            state.todos.splice(accountIndex, 1);
+            const accountIndex = state.accounts.findIndex(todo => todo.id === action.payload);
+            state.accounts.splice(accountIndex, 1);
             return {
                 ...state,
                 loading: false

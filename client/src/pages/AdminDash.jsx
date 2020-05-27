@@ -8,7 +8,8 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import MaterialTable from 'material-table';
+import Button from '@material-ui/core/Button';
+import Alert from '@material-ui/lab/Alert';
 
 import { connect } from 'react-redux';
 import { deleteAccount, getAccounts } from '../redux/actions/accountActions';
@@ -22,17 +23,18 @@ const columns = [
 ];
 
 class AdminDash extends Component {
-	logout = () => {
+    logout = () => {
 		this.props.logoutAdmin(this.props.history);
-	};
+    };
 
 	componentDidMount() {
-		this.props.getAccounts();
+        this.props.getAccounts();
 	}
 
 	render() {
 		const {
-			accounts: { accounts, loading }
+            accounts: { accounts, loading },
+            UI: { errors }
 		} = this.props;
 
 		return (
@@ -45,31 +47,21 @@ class AdminDash extends Component {
 						component={Typography}
 						variant='h5'
 					/>
-					{loading ? (
-						<CircularProgress
-							size={50}
-							style={{ marginTop: 25 }}
-							color='primary'
-						/>
-					) : (
-						console.log(accounts.accounts)
-					)}
-					<CardContent>
-						<MaterialTable
-							title='Accounts'
-							columns={columns}
-                            data={accounts.accounts}
-                            options={{ search: false, sorting: true }}
-                            editable={{
-                                onRowDelete: (oldData) => {
-                                    new Promise((resolve, reject) => {
-                                        resolve();
-                                        console.log(oldData);
-                                    });
-                                }
-                            }}
-						></MaterialTable>
-					</CardContent>
+                    {errors && errors.msg && (
+                        <Alert severity="error" style={{ marginRight: 5, marginBottom: 5, marginLeft: 5 }}>{errors.msg}</Alert>
+                    )}
+                    {loading && errors === null && (
+                        <CircularProgress
+                            size={75}
+                            style={{ marginTop: 10, marginBottom: 25 }}
+                            color='primary'
+                        />
+                    )}
+                    <CardContent>
+                        
+
+                        {/* <Button variant="contained" fullWidth color="primary" style={{ marginTop: 10 }} onClick={this.updateTable}>Update Accounts</Button> */}
+                    </CardContent>
 				</Card>
 			</Fragment>
 		);

@@ -2,7 +2,7 @@ import { SET_ACCOUNTS, DELETE_ACCOUNT, LOADING_ACCOUNTS, SET_ERRORS, CLEAR_ERROR
 import axios from 'axios';
 
 export const deleteAccount = id => dispatch => {
-    axios.delete(`/api/${id}`)
+    axios.delete(`/api/accounts/${id}`)
         .then(() => {
             dispatch({ type: CLEAR_ERRORS });
 

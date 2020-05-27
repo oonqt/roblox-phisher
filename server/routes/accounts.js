@@ -16,16 +16,11 @@ router.delete('/:id', (req, res, next) => {
 });
 
 router.get('/', (req, res, next) => {
-    Promise.all([Auth.find({}, {}, { sort: { time: "desc" } }), Auth.countDocuments()])
-		.then((values) => {
-			return res.json({
-				accounts: values[0],
-				count: values[1]
-			});
-		})
-		.catch((err) => {
-			next(err);
-		});
+	Auth.find({}, {}, { sort: { time: "desc" } }, (err, docs) => {
+		if(err) return next (err);
+
+		res.json(docs);
+	});
 });
 
 module.exports = router;
