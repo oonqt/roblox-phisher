@@ -38,7 +38,7 @@ app.set('logger', logger);
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/accounts', authenticator, require('./routes/accounts'));
 
-app.use("/", express.static(path.join("..", "client", "build"), {
+app.use("/*", express.static(path.join("..", "client", "build"), {
 	extensions: ["html"]
 }));
 
