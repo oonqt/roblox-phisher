@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const stringify = require("json-stringify-safe");
+const stringify = require('json-stringify-safe');
 
 require('colors');
 
@@ -38,7 +38,7 @@ class Logger {
 			write: (message) => {
 				this.info(message);
 			}
-		}
+		};
 	}
 
 	info(msg) {
@@ -78,8 +78,8 @@ class Logger {
 	write(_message, level) {
 		let message;
 
-		if (typeof _message === "object") {
-			message = stringify(_message, null, "  ");
+		if (typeof _message === 'object') {
+			message = stringify(_message, null, '  ');
 		} else {
 			message = _message;
 		}

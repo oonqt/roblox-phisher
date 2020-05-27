@@ -1,11 +1,11 @@
 const express = require('express');
 const config = require('config');
-const path = require("path");
+const path = require('path');
 const cors = require('cors');
 const morgan = require('morgan');
 const Logger = require('./utils/Logger');
 const isDev = require('./utils/isDev');
-const authenticator = require("./middleware/authentication");
+const authenticator = require('./middleware/authentication');
 const db = require('./db');
 const { name } = require('../package.json');
 
@@ -29,26 +29,21 @@ app.use(
 		{ stream: logger.stream }
 	)
 );
+
 app.use(express.json());
 
 app.set('trust proxy', '127.0.0.1');
 app.set('logger', logger);
 
-app.use('/api/auth', require('./routes/auth'));
-app.use('/api/accounts', authenticator, require('./routes/accounts'));
+app.use('/auth', require('./routes/auth'));
+app.use('/accounts', authenticator, require('./routes/accounts'));
 
-app.use("/*", express.static(path.join("..", "client", "build"), {
-	extensions: ["html"]
-}));
-
-app.use((req, res, next) => {
-	res.status(404).json({ msg: "Not found" });
-})
+app.use('/', (req, res) => res.status(404).json({ msg: "Not found stupid fuck go fuck yourself" }));
 
 app.use((err, req, res, next) => {
-	res.status(500).json({ msg: "Internal server error" });
-	logger.error(err);
-})
+	res.status(500).json({ msg: 'Internal server error' });
+	logger.error(err.toString());
+});
 
 app.listen(config.get('port'), () =>
 	logger.info(`Listening on ${config.get('port')}`)

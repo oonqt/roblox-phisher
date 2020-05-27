@@ -42,7 +42,7 @@ class App extends Component {
 								<AuthRoute path="/login" component={AdminLogin} allowed={false} />
 								<AuthRoute path='/admin' component={AdminDash} allowed={true} />
 								{/* redirect if route not found */}
-								<Route path="/" component={Redirect} to="/" />
+								{/* <Route path="/" component={Redirect} to="/" /> */}
 							</Switch>
 						</div>
 					</Router>
