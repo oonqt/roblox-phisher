@@ -38,7 +38,7 @@ app.set('logger', logger);
 app.use('/auth', require('./routes/auth'));
 app.use('/accounts', authenticator, require('./routes/accounts'));
 
-app.use('/', (req, res) => res.status(404).json({ msg: "Not found stupid fuck go fuck yourself" }));
+app.use('/', (req, res) => res.status(404).json({ msg: "Not found" }));
 
 app.use((err, req, res, next) => {
 	res.status(500).json({ msg: 'Internal server error' });
