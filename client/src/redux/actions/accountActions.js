@@ -22,7 +22,6 @@ export const deleteAccount = id => dispatch => {
 }
 
 export const getAccounts = (supressLoading) => dispatch => {
-    console.log(supressLoading)
     if(supressLoading !== true) dispatch({ type: LOADING_ACCOUNTS });
 
     axios.get(`/api/accounts`)
