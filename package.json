@@ -1,7 +1,7 @@
 {
   "name": "roblox-phisher",
   "version": "1.0.0",
-  "description": "A fullstack Roblox phishing server using NodeJS",
+  "description": "A fullstack Roblox phishing server using NodeJ",
   "scripts": {
     "install:client": "yarn install --cwd client",
     "install:server": "yarn install --cwd server",

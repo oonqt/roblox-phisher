@@ -4,5 +4,5 @@
     "logsPath": "logs",
     "logRetentionCount": 10,
     "port": 5055,
-    "dbconn": "mongodb://192.168.0.42/phisher"
+    "dbconn": "mongodb://localhost/phisher"
 }

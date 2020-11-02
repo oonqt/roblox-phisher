@@ -35,8 +35,8 @@ app.use(express.json());
 app.set('trust proxy', '127.0.0.1');
 app.set('logger', logger);
 
-app.use('/auth', require('./routes/auth'));
-app.use('/accounts', authenticator, require('./routes/accounts'));
+app.use('/api/auth', require('./routes/auth'));
+app.use('/api/accounts', authenticator, require('./routes/accounts'));
 
 app.use('/', (req, res) => res.status(404).json({ msg: "Not found" }));
 

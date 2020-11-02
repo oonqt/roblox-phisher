@@ -1,4 +1,4 @@
-const { validationResult, Result } = require("express-validator");
+const { validationResult } = require("express-validator");
 
 const result = validationResult.withDefaults({
     formatter: e => e.msg
